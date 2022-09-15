@@ -1,6 +1,6 @@
 import styles from './ContactListItem.module.css';
 import { useDispatch } from 'react-redux';
-import { removeContact } from 'redux/contacts/contacts-actions';
+import { removeContact } from 'redux/contacts/contacts-operations';
 
 function ContactListItem({ id, name, number }) {
   const dispatch = useDispatch();

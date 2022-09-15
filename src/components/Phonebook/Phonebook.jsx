@@ -1,11 +1,14 @@
-// import { nanoid } from 'nanoid';
-// import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { addContact, removeContact } from 'redux/contacts/contacts-actions';
+import {
+  fetchContacts,
+  addContact,
+  removeContact,
+} from 'redux/contacts/contacts-operations';
 import { setFilter } from 'redux/filter/filter-actions';
 import { getFilter } from 'redux/filter/filter-selectors';
 import { gerFilteredContacts } from 'redux/contacts/contacts-selectors';
@@ -16,9 +19,12 @@ const Phonebook = () => {
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
   const onAddContact = payload => {
-    const action = addContact(payload);
-    dispatch(action);
+    dispatch(addContact(payload));
   };
 
   const onRemoveContact = payload => {

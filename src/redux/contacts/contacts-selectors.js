@@ -1,11 +1,11 @@
-export const getContacts = ({ contacts }) => contacts;
+export const getContacts = contacts => contacts.items;
 
-export const gerFilteredContacts = ({ contacts, filter }) => {
+export const gerFilteredContacts = (contacts, filter) => {
   if (!filter) {
-    return contacts;
+    return contacts.items;
   }
   const normalizedFilter = filter.toLowerCase();
-  const result = contacts.filter(({ name }) => {
+  const result = contacts.items.filter(({ name }) => {
     const normalizedName = name.toLowerCase();
     return normalizedName.includes(normalizedFilter);
   });
