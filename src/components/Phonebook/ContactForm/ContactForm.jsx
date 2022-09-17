@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/contacts-operations';
@@ -35,7 +34,6 @@ const ContactForm = () => {
     event.preventDefault();
 
     onAddContact({ name, phone: number });
-    console.log({ name, number });
 
     reset();
   };
@@ -76,10 +74,6 @@ const ContactForm = () => {
       <button type="submit">Add contact</button>
     </form>
   );
-};
-
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
 };
 
 export default ContactForm;

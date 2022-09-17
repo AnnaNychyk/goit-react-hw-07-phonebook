@@ -37,7 +37,6 @@ const contactsReducer = createReducer(initialStore, {
     store.error = null;
   },
   [actions.removeContactSuccess]: (store, { payload }) => {
-    console.log(store);
     store.loading = false;
     store.items = store.items.filter(({ id }) => id !== payload);
   },

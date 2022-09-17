@@ -14,10 +14,24 @@ export const fetchContacts = () => {
   return func;
 };
 
+const isDuplicate = ({ name }, contacts) => {
+  const normalizedName = name.toLowerCase();
+
+  const result = contacts.find(item => {
+    return normalizedName === item.name.toLowerCase();
+  });
+
+  return Boolean(result);
+};
+
 export const addContact = data => {
   const func = async (dispatch, getState) => {
-    const store = getState();
-    console.log(store);
+    const { contacts } = getState();
+
+    if (isDuplicate(data, contacts.items)) {
+      return alert(`${data.name} is alredy exist`);
+    }
+
     try {
       dispatch(actions.addContactLoading());
       const result = await api.addContact(data);

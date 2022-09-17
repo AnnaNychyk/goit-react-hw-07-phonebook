@@ -6,7 +6,6 @@ function ContactListItem({ id, name, number }) {
   const dispatch = useDispatch();
 
   const deleteContact = () => {
-    console.log('delete');
     dispatch(removeContact(id));
   };
 

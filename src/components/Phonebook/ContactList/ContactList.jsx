@@ -7,8 +7,6 @@ function ContactList() {
   const contacts = useSelector(store => store.contacts.items);
   const filter = useSelector(getFilter);
 
-  console.log(filter);
-
   const getFilteredContacts = () => {
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
@@ -27,7 +25,6 @@ function ContactList() {
 
 ContactList.propTypes = {
   list: PropTypes.arrayOf(PropTypes.object.isRequired),
-  onRemove: PropTypes.func.isRequired,
 };
 
 export default ContactList;
