@@ -5,7 +5,7 @@ import filterReducer from './filter/filter-reducer';
 
 const store = configureStore({
   reducer: {
-    books: contactsReducer,
+    contacts: contactsReducer,
     filter: filterReducer,
   },
 });

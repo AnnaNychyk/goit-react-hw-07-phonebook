@@ -15,7 +15,9 @@ export const fetchContacts = () => {
 };
 
 export const addContact = data => {
-  const func = async dispatch => {
+  const func = async (dispatch, getState) => {
+    const store = getState();
+    console.log(store);
     try {
       dispatch(actions.addContactLoading());
       const result = await api.addContact(data);

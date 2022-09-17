@@ -1,15 +1,25 @@
 import PropTypes from 'prop-types';
 import ContactListItem from '../ContactListItem/ContactListItem';
 import { useSelector } from 'react-redux';
-import { gerFilteredContacts } from '../../../redux/contacts/contacts-selectors';
+import { getFilter } from 'redux/filter/filter-selectors';
 
-function ContactList({ list, onRemove }) {
-  const contacts = useSelector(gerFilteredContacts);
+function ContactList() {
+  const contacts = useSelector(store => store.contacts.items);
+  const filter = useSelector(getFilter);
+
+  console.log(filter);
+
+  const getFilteredContacts = () => {
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  };
+
   return (
     <ul>
       {contacts &&
-        list.map(({ id, name, number }) => (
-          <ContactListItem key={id} name={name} number={number} id={id} />
+        getFilteredContacts().map(({ id, name, phone }) => (
+          <ContactListItem key={id} name={name} number={phone} id={id} />
         ))}
     </ul>
   );
