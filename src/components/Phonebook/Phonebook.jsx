@@ -7,9 +7,11 @@ import Filter from './Filter/Filter';
 import { fetchContacts } from 'redux/contacts/contacts-operations';
 import { setFilter } from 'redux/filter/filter-actions';
 import { getFilter } from 'redux/filter/filter-selectors';
+import { getLoading } from 'redux/contacts/contacts-selectors';
 
 const Phonebook = () => {
   const filter = useSelector(getFilter);
+  const loading = useSelector(getLoading);
 
   const dispatch = useDispatch();
 
@@ -28,6 +30,9 @@ const Phonebook = () => {
 
       <h2>Contacts</h2>
       <Filter onChange={onSetFilter} value={filter} />
+
+      {loading && <p>...load contacts</p>}
+
       <ContactList />
     </div>
   );

@@ -1,5 +1,6 @@
 export const getContacts = store => store.contacts.items;
 export const getFilter = store => store.contacts.filter;
+export const getLoading = store => store.contacts.loading;
 
 export const getFilteredContacts = (contacts, filter) => {
   if (!filter) {
